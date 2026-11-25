@@ -30,15 +30,15 @@
   --shadow-sm: 0 1px 2px rgba(23, 25, 17, 0.05);
   --shadow-md: 0 18px 40px -24px rgba(23, 25, 17, 0.35);
 
-  --radius-sm: 10px;
-  --radius: 18px;
-  --radius-lg: 24px;
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
 
   --container: 1120px;
   --header-h: 68px;
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -101,9 +101,7 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background:
-    radial-gradient(52rem 36rem at 85% -12%, var(--glow), transparent 65%),
-    radial-gradient(40rem 30rem at -10% 30%, var(--glow), transparent 70%);
+  background: none;
 }
 
 h1,
@@ -420,16 +418,11 @@ strong {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.3rem 0.75rem 0.3rem 0.6rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: var(--shadow-sm);
 }
 
 .pulse {
@@ -441,13 +434,7 @@ strong {
 }
 
 .pulse::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px solid var(--accent);
-  opacity: 0;
-  animation: pulse 2.6s var(--ease) infinite;
+  display: none;
 }
 
 @keyframes pulse {
@@ -563,30 +550,8 @@ strong {
 /* Profile card */
 .profile-card {
   position: relative;
-  overflow: hidden;
-  padding: 1.35rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: var(--shadow-md);
-}
-
-.profile-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.35;
-  -webkit-mask-image: radial-gradient(circle at 85% 0%, #000, transparent 72%);
-  mask-image: radial-gradient(circle at 85% 0%, #000, transparent 72%);
-}
-
-.profile-card > * {
-  position: relative;
+  padding: 0 0 0 1.4rem;
+  border-left: 2px solid var(--accent);
 }
 
 .profile-head {
@@ -603,14 +568,14 @@ strong {
   place-items: center;
   width: 56px;
   height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #158264, #0a4f3b);
+  border-radius: var(--radius-sm);
+  background: var(--accent);
   color: #eafff5;
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   overflow: hidden;
-  box-shadow: 0 0 0 1px var(--border), 0 0 0 4px var(--bg);
+  box-shadow: none;
 }
 
 .avatar img {
@@ -1134,14 +1099,7 @@ strong {
 }
 
 .contact-glow {
-  position: absolute;
-  top: -14rem;
-  right: -8rem;
-  width: 34rem;
-  height: 34rem;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(126, 226, 184, 0.16), transparent 62%);
-  pointer-events: none;
+  display: none;
 }
 
 .contact-copy,
@@ -1466,7 +1424,7 @@ strong {
   }
 
   .profile-card {
-    padding: 1.15rem;
+    padding-left: 1rem;
   }
 
   .profile-meta > div {
@@ -1492,8 +1450,6 @@ strong {
   .contact-row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.3rem;
-  }
 
   .contact-value {
     text-align: left;
